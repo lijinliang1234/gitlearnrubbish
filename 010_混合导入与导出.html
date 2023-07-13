@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script type="module">
+    // import myClassModule,{baidu} from "./010_混合导入与导出.js";
+    // let c = new myClassModule();
+    // console.log(c.a('default'));
+    // console.log(baidu);
+    
+    // 如果批量导入
+    import * as myApi from "./010_混合导入与导出.js";
+    let hd= new myApi.default
+    console.log(hd.a('default'));
+    console.log(myApi.baidu);
+    
+</script>
+<body>
+    
+</body>
+</html>

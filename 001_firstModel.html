@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // AMD require.js   CMD sea.js
+    // COMMONJS => Node.js
+    // AMD与COMMONJS都支持的UMD
+
+    // 关键点：1，有很多模块，需要容器来管理这些模块。2，定义模块，向容器中添加模块。3，模块之间的依赖
+
+    let module = (function(){
+        // 定义一个容器来存储我们的模块 管理模块
+        let moduleList = {}
+        function define(name,modules,action){
+            // console.log("基本模块定义");
+            modules.map((m,i)=>{
+                modules[i] = moduleList[m]
+            })
+            moduleList[name] = action.apply(null,modules)
+            // console.log(moduleList);
+        }
+        return {define}
+    })();
+    module.define('toolModel',[],function(){// 第一个参数：模块的名字；第二个参数：是否依赖其他模块；第三个参数：该模块具体的动作
+        return {
+            first(arr){
+                return arr[0]
+            },
+            max(arr,key){
+                return arr.sort((a,b) => b[key]-a[key])[0]//返回最大值 ==》sort() 方法用于对数组的元素进行排序。
+            }
+        }
+    })
+    // 依赖hd模块
+    // module.define => 定义模块
+    // 依赖模块
+    module.define('lesson',["toolModel"],function(toolModel){
+        let data=[{
+            name:'js',
+            price:300
+        },{
+            name:'c++',
+            price:200
+        },{
+            name:'java',
+            price:600
+        }]
+        
+       console.log(toolModel.max(data,"price"));
+        
+    })
+
+</script>
+</html>

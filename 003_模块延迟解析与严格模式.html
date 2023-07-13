@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 由于模块之间会有依赖关系
+        所以系统在处理模块业务的时候会将所有的模块全部加载
+        最后全部解析之后才会进行工作
+
+        所有模块全部加载之后，才开始解析
+
+        模块得到运行机制是后解析
+-->
+<script type="module">
+    "use strict";//使用严格模式
+    console.log(document.querySelector('button'));
+    import {} from "./002_useJSModel.js"
+</script>
+<body>
+    <button>我是一个在脚本之后的html代码</button>
+</body>
+</html>

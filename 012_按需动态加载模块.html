@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script type="module">
+    document.querySelector('button').addEventListener('click',function(){
+        if (true) {
+        import ("./012_按需动态加载模块.js").then(
+            ({school,url}) => {console.log(school,url);}
+    )
+    }
+    })
+</script>
+
+<body>
+    <button>111111111</button>
+</body>
+
+</html>
